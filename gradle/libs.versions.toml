@@ -19,6 +19,7 @@ serialization  = "1.7.3"
 retrofit = "2.9.0"
 okhttp = "4.11.0"
 coil = "2.4.0"
+fragment = "1.8.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,8 +35,9 @@ dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
-navigation-fragment = { module = "androidx.navigation:navigation-fragment" , version.ref = "navigation"}
-navigation-ui = { module = "androidx.navigation:navigation-fragment" , version.ref = "navigation"}
+navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx" , version.ref = "navigation"}
+navigation-ui = { module = "androidx.navigation:navigation-ui-ktx" , version.ref = "navigation"}
+fragment-ktx = { module = "androidx.fragment:fragment-ktx" , version.ref = "fragment"}
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }

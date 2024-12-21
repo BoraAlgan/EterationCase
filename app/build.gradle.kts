@@ -36,6 +36,9 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -66,6 +69,9 @@ dependencies {
     //navigation
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+
+    //fragment-ktx
+    implementation(libs.fragment.ktx)
 
     //retrofit & okhttp
     implementation(libs.retrofit)
