@@ -2,17 +2,18 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.dagger)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.safeargs.plugin)
 }
 
 android {
     namespace = "com.example.eterationcase"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.eterationcase"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -36,7 +37,11 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
+
 
 dependencies {
 
@@ -51,11 +56,13 @@ dependencies {
 
     //hilt
     implementation(libs.dagger.hilt.android)
-    kapt(libs.dagger.hilt.compiler)
+    implementation(libs.dagger.hilt.navigation)
+    ksp(libs.dagger.hilt.compiler)
 
     //room
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
 
     //coroutines
     implementation(libs.coroutines)
@@ -64,15 +71,20 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     //navigation
-    implementation(libs.navigation.fragment)
-    implementation(libs.navigation.ui)
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
+
+    //fragment-ktx
+    implementation(libs.fragment.ktx)
 
     //retrofit & okhttp
     implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.gson)
+    implementation(libs.retrofit.serialization)
     implementation(libs.okhttp)
 
     //coil
     implementation(libs.coil)
 
+    //transformations
+    implementation(libs.lifecycle.livedata.ktx)
 }
