@@ -93,7 +93,7 @@ class FilterBottomSheetFragment : BottomSheetDialogFragment() {
         brandsAdapter.setData(brands, selectedBrands)
         modelsAdapter.setData(models, selectedModels)
 
-        binding.brandSearch.doAfterTextChanged {
+        binding.brandEditText.doAfterTextChanged {
             if (!it.isNullOrBlank()) {
                 val filteredBrands = brands.filter { brand ->
                     brand.contains(it.toString(), ignoreCase = true)
@@ -104,7 +104,7 @@ class FilterBottomSheetFragment : BottomSheetDialogFragment() {
             }
         }
 
-        binding.modelSearch.doAfterTextChanged {
+        binding.modelEditText.doAfterTextChanged {
             if (!it.isNullOrBlank()) {
                 val filteredModels = models.filter { model ->
                     model.contains(it.toString(), ignoreCase = true)

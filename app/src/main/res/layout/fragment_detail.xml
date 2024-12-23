@@ -25,6 +25,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/favoriteIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="8dp"
+                android:contentDescription="@string/favorite_icon"
+                android:src="@drawable/ic_star_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/carImage" />
+
             <TextView
                 android:id="@+id/carName"
                 android:layout_width="0dp"
@@ -56,9 +66,8 @@
         android:id="@+id/addToCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/light_gray"
         android:orientation="horizontal"
-        android:layout_margin="16dp"
-        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -70,21 +79,30 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Price:" />
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/priceDot"
+                android:textColor="@color/blue" />
 
             <TextView
                 android:id="@+id/carPrice"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text=""
+                android:textStyle="bold" />
 
         </LinearLayout>
 
 
         <Button
             android:id="@+id/addToCartButton"
+            style="@style/ButtonStyle.EterationCase.Blue.Stroke.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add To Cart" />
+            android:layout_marginEnd="16dp"
+            android:text="@string/add_to_cart" />
 
 
     </LinearLayout>

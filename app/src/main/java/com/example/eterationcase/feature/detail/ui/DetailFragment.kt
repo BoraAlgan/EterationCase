@@ -42,7 +42,14 @@ class DetailFragment : Fragment() {
                     placeholder(R.drawable.placeholder)
                     error(R.drawable.placeholder_error)
                 }
+                favoriteIcon.setImageResource(
+                    if (car.isFavourite) R.drawable.ic_star_1 else R.drawable.ic_star_2
+                )
             }
+        }
+
+        binding.favoriteIcon.setOnClickListener {
+            viewModel.onFavouriteClick()
         }
 
         binding.addToCartButton.setOnClickListener {
