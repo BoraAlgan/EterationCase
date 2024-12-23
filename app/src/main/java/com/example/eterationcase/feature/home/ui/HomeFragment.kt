@@ -75,4 +75,9 @@ class HomeFragment : Fragment() {
             adapter.submitList(cars.toList())
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.updateFavourites()
+    }
 }

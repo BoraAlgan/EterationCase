@@ -23,7 +23,7 @@
         android:id="@+id/favoritesFragment"
         android:name="com.example.eterationcase.feature.favorites.ui.FavouritesFragment"
         android:label="Favorites"
-        tools:layout="@layout/fragment_favorites" >
+        tools:layout="@layout/fragment_favorites">
 
         <action
             android:id="@+id/favorites_to_detail"
@@ -45,7 +45,7 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.example.eterationcase.feature.cart.ui.CartFragment"
-        android:label="Home"
+        android:label="Cart"
         tools:layout="@layout/fragment_cart">
 
     </fragment>

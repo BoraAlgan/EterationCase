@@ -20,7 +20,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val carRepository: CarRepository,
     private val productRepository: ProductRepository,
-    private val favoriteRepository: FavouriteRepository
+    private val favouriteRepository: FavouriteRepository
 ) : ViewModel() {
 
     private val _filter = MutableLiveData(FilterModel())
@@ -41,7 +41,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val response = carRepository.getCars()
-                val favourites = favoriteRepository.getFavorites().map { it.id }
+                val favourites = favouriteRepository.getFavorites().map { it.id }
                 response.forEach { car ->
                     car.isFavourite = favourites.contains(car.id)
                 }
@@ -81,7 +81,7 @@ class HomeViewModel @Inject constructor(
         val cars = _cars.value?.toMutableList() ?: mutableListOf()
         val filteredList = cars.filter {
             if (filter != null && filter.query.isNotBlank()) {
-                it.name.contains(filter.query)
+                it.name.contains(filter.query, true)
             } else true
         }.filter {
             if (filter != null && filter.selectedBrands.isNotEmpty()) {
@@ -136,9 +136,9 @@ class HomeViewModel @Inject constructor(
     fun onFavouriteClick(car: CarUiItem) {
         viewModelScope.launch {
             try {
-                val isFavourite = favoriteRepository.isFavorite(car.id)
+                val isFavourite = favouriteRepository.isFavorite(car.id)
                 if (!isFavourite) {
-                    favoriteRepository.addFavorite(
+                    favouriteRepository.addFavorite(
                         FavouriteEntity(
                             productId = car.id,
                             name = car.name,
@@ -147,16 +147,16 @@ class HomeViewModel @Inject constructor(
                         )
                     )
                 } else {
-                    favoriteRepository.removeFavorite(car.id)
+                    favouriteRepository.removeFavorite(car.id)
                 }
-                updateFavoriteStatus(car, !isFavourite)
+                updateFavouriteStatus(car, !isFavourite)
             } catch (e: Exception) {
 
             }
         }
     }
 
-    private fun updateFavoriteStatus(car: CarUiItem, isFavourite: Boolean) {
+    private fun updateFavouriteStatus(car: CarUiItem, isFavourite: Boolean) {
         viewModelScope.launch {
             val cars = _cars.value?.toMutableList() ?: mutableListOf()
             val carIndex = cars.indexOf(car)
@@ -164,6 +164,19 @@ class HomeViewModel @Inject constructor(
                 cars[carIndex] = cars[carIndex].copy(isFavourite = isFavourite)
             }
             _cars.value = cars
+            applyFilters()
+        }
+    }
+
+    fun updateFavourites() {
+        viewModelScope.launch {
+            val cars = _cars.value?.toMutableList() ?: mutableListOf()
+            val favourites = favouriteRepository.getFavorites().map { it.id }
+            cars.forEachIndexed { index, car ->
+                cars[index] = cars[index].copy(isFavourite = favourites.contains(car.id))
+            }
+            _cars.value = cars
+            applyFilters()
         }
     }
 }

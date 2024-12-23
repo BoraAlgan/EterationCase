@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -25,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/product_price"
+            android:textColor="@color/blue"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -33,24 +33,32 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/decreaseButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:text="-" />
-
         <TextView
-            android:id="@+id/productQuantity"
+            android:id="@+id/decreaseButton"
+            style="@style/ButtonStyle.EterationCase.Gray"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:gravity="center"
-            android:text="1"
-            android:textSize="16sp" />
+            android:text="@string/minus"
+            android:textAlignment="gravity"
+            android:textColor="@color/black" />
 
-        <Button
-            android:id="@+id/increaseButton"
+        <TextView
+            android:id="@+id/productQuantity"
+            style="@style/ButtonStyle.EterationCase.Blue"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:text="+" />
+            android:gravity="center"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/increaseButton"
+            style="@style/ButtonStyle.EterationCase.Gray"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="@string/plus"
+            android:textAlignment="gravity"
+            android:textColor="@color/black" />
     </LinearLayout>
 </LinearLayout>

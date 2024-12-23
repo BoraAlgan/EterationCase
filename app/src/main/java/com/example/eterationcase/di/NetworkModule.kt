@@ -32,7 +32,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(json: Json, client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("API-KEY")
+            .baseUrl("https://5fc9346b2af77700165ae514.mockapi.io")
             .addConverterFactory(json.asConverterFactory("application/json; charset=UTF8".toMediaType()))
             .client(client)
             .build()

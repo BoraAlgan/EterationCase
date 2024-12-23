@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.eterationcase.feature.cart.data.ProductEntity
 import com.example.eterationcase.feature.cart.domain.ProductRepository
 import com.example.eterationcase.feature.detail.domain.CarDetailRepository
+import com.example.eterationcase.feature.favorites.data.FavouriteEntity
 import com.example.eterationcase.feature.favorites.domain.FavouriteRepository
 import com.example.eterationcase.feature.home.domain.CarUiItem
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -43,6 +44,38 @@ class DetailViewModel @Inject constructor(
                     _car.value = null
                 }
             }
+        }
+    }
+
+    fun onFavouriteClick() {
+        viewModelScope.launch {
+
+            _car.value?.let {
+                try {
+                    val isFavourite = favouriteRepository.isFavorite(it.id)
+                    if (!isFavourite) {
+                        favouriteRepository.addFavorite(
+                            FavouriteEntity(
+                                productId = it.id,
+                                name = it.name,
+                                price = it.price.toDouble(),
+                                image = it.image
+                            )
+                        )
+                    } else {
+                        favouriteRepository.removeFavorite(it.id)
+                    }
+                    updateFavouriteStatus(!isFavourite)
+                } catch (e: Exception) {
+
+                }
+            }
+        }
+    }
+
+     private fun updateFavouriteStatus(isFavourite: Boolean) {
+        viewModelScope.launch {
+            _car.value = _car.value?.copy(isFavourite = isFavourite)
         }
     }
 

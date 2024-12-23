@@ -16,7 +16,7 @@
             android:id="@+id/carImage"
             android:layout_width="0dp"
             android:layout_height="150dp"
-            android:contentDescription="Definitely not a cat"
+            android:contentDescription="@string/definitely_not_a_cat"
             android:scaleType="centerCrop"
             android:src="@drawable/placeholder"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_margin="8dp"
-            android:contentDescription="Favorite Icon"
+            android:contentDescription="@string/favorite_icon"
             android:src="@drawable/ic_star_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/carImage" />
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="start"
-            android:text="Price"
+            android:text="@string/price"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
             android:ellipsize="end"
             android:gravity="start"
             android:maxLines="2"
-            android:text="Car Name"
+            android:text="@string/car_name"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,6 +62,7 @@
 
         <Button
             android:id="@+id/addToCartButton"
+            style="@style/ButtonStyle.EterationCase.Blue.Stroke"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
